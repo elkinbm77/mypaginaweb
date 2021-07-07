@@ -1,0 +1,10 @@
+{% extends "tienda/layout.html" %}
+
+{% block content %}
+
+<br>
+<p> Tu carrito ha quedado vacío</p>
+<br>
+<a href="{% url 'sitio:consultar_carrito'%}">Regresar</a>
+
+{% endblock %}

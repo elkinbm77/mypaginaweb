@@ -1,0 +1,49 @@
+{% extends "tienda/layout.html" %}
+<!---
+        "lista_productos": queryset,
+        "lista_categorias": Categoria.objects.all(),
+        "categoria_seleccionada": una_categoria
+
+         "lista_productos": queryset,
+        "palabra_buscada": una_busqueda
+---->    
+{% block content %}
+
+    {% if categoria_seleccionada %}
+        <br>
+        <h3>Busqueda de Artículos por categoria.</h3>
+        <div class="alert alert-info" role="alert">{{ categoria_seleccionada }}</div>
+
+    {% else %}
+
+        {% if palabra_buscada %}       
+            <br>
+            <h3>Busqueda de Artículos por la palabra: {{ palabra_buscada }}</h3>
+            <div class="alert alert-info" role="alert">Articulos encontrados</div>
+
+        {% else %}
+            <br>
+            <h3>Busqueda en blanco</h3>
+            <div class="alert alert-info" role="alert">Articulos encontrados: 0</div>
+
+        {% endif %}
+             
+    {% endif %}
+
+    <ul>
+        {% for un_producto in lista_productos %}
+            <li>Título:              
+                <a href="{% url 'sitio:producto' un_producto.id %}">{{un_producto.titulo}}</a> /                
+                --- Descripción: {{un_producto.descripcion}}
+
+            </li>
+            <hr>
+        {% empty %}
+            <li>
+                No se encontraron productos.
+            </li>
+        {% endfor %}
+    </ul>
+<br>
+
+{% endblock %}

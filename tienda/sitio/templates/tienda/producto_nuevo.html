@@ -1,0 +1,80 @@
+{% extends "tienda/layout.html" %}
+{% block content %}
+
+<br>
+<h3>Agregar un Producto...</h3>
+
+
+<form enctype="multipart/form-data" action="{% url 'sitio:producto_alta' %}" method="post" >
+
+    {% csrf_token %}
+
+    <div class="container">
+
+    <div class="form-group row">
+        <label for="titulo_input"  class="col-sm-2 col-form-label">Titulo:</label> {{ form.titulo }} {{ form.titulo.errors }}
+    </div>
+            
+        <div class="row">
+            
+            <div class="col-lg-6 col-md-6 col-xs-6 thumb">
+
+                 <div class="form-group row">
+                    <label for="imagen_input"  class="">IMAGEN: </label> {{ form.imagen }} {{ form.imagen.errors }}
+                </div>
+
+                <div class="d-flex align-items-end flex-column" style="height: 250px;">
+                      <div class="mt-auto p-3">
+                        <div class="d-flex flex-row-reverse">           
+                            <div class="p-6">
+                            </div>
+                        </div>
+                      </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-xs-6 thumb">
+                          
+                    <div class="form-group row"  class="">
+                        <div class="d-flex">
+                            <div class="p-2"><label for="categoria_input"  class="">Categoria: </label>
+                            </div>
+                            <div class="ml-auto p-2">
+                             {{ form.categoria }} {{ form.categoria.errors }}
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <div class="p-2"><label for="descripcion_input">Descripcion:</label>
+                            </div>
+                            <div class="ml-auto p-2">
+                                 {{ form.descripcion }} {{ form.descripcion.errors }}
+                            <script>$("#id_descripcion").removeAttr("required");</script>
+                            </div>
+                        </div>
+                    </div>    
+                                          
+                  <div class="form-group row">
+                    <div class="d-flex align-items-center">
+                        <div class="p-2"><label for="precio_input"  class="">                     
+                          </label>Precio: {{ form.precio }} {{ form.precio.errors }}
+                        </div>
+                        <div class="ml-auto p-4">
+                            <button class="btn btn-primary" type="submit">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+
+          </div>
+
+        </div>
+
+    <br>
+    <br>
+
+</form>
+
+{% endblock %}

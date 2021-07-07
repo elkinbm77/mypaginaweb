@@ -1,0 +1,97 @@
+{% extends 'tienda/layout.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+	<!--Contenido-->
+	<main>
+		<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<div class="col-12 text-center">
+				        <br>
+				        <samp>
+				             <h3>CONTÁCTANOS</h3>
+				             <br>
+				        </samp>
+				    </div> 
+					<div class="row contacto justify-content-center align-items-center">
+						<div class="col-12 col-lg-2 col-md-2">
+							<a href="#" class="icono icon-phone phone"></a>
+						</div>
+						<div class="col-12 col-lg-3 col-md-3">
+							<p class="text-center">+025 456 878</p>
+						</div>
+						<div class="col-12 col-lg-7 col-md-7">
+							<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante </p>
+						</div>
+					</div>
+
+					<!---<div class="row contacto justify-content-center align-items-center">
+						<div class="col-12 col-lg-2 col-md-2">
+							<a href="#" class="icono icon-mail mail"></a>
+						</div>
+						<div class="col-12 col-lg-3 col-md-3">
+							<p class="text-center">nombre@ejemplo.com</p>
+						</div>
+						<div class="col-12 col-lg-7 col-md-7">
+							<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante </p>
+						</div>
+					</div>-->
+
+					<div class="row contacto justify-content-center align-items-center">
+						<div class="col-12 col-lg-2 col-md-2">
+							<a href="#" class="icono icon-whatsapp whatsapp"></a>
+						</div>
+						<div class="col-12 col-lg-3 col-md-3">
+							<p class="text-center">+051 000 000 000
+							</p>
+						</div>
+						<div class="col-12 col-lg-7 col-md-7">
+							<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante </p>
+						</div>
+					</div>
+				</div>
+				<!------------------------------------------------------->
+					<!--Acerca de - contenido -->
+		<div class="container">
+			<div class="row contenedor">
+				<div class="col">
+					<h2 class="titulo">Envíanos un correo</h2>
+						<!-- Formulario de contacto -->
+						<form action="{% url 'sitio:envia_correo' %}" method="post">
+							 {% csrf_token %}
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" placeholder="Nombre" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<input type="email" placeholder="Correo Electronico"
+										class="form-control">
+								</div>
+								<ul class="errorlist">
+									<!--<li>El email no es correcto.</li>--->
+								</ul>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<textarea class="form-control" placeholder="Comentario"></textarea>
+								</div>
+							</div>
+							<div class="input-group">
+								<input type="submit" class="boton btn-block py-2" value="Enviar">
+							</div>
+						</form>
+						<!-- Fin formulario de contacto -->
+						<br>
+				     </div>
+			      </div>
+		       </div>
+				<!------------------------------------------------------->
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "registration/layout.html" %}
+<!--{ % extends 'tienda/layout.html'  % }--->
+
+{% block content %}
+
+ <h3>REGISTRARSE EN NUESTRA WEB</h3>
+
+<!---<form enctype="multipart/form-data" action="{% url 'sitio:articulo_alta' %}" method="post" >-->
+<form method="post" action="{% url 'usuarios:registrarse' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <div class="input-group">
+          <input type="email" placeholder="Correo Electronico" name="email"  class="form-control">
+        </div>
+        <!---<ul class="errorlist">
+          <li>El email no es correcto.</li>
+        </ul>--->
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" placeholder="Usuario" name= "username" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+         <input type="password" name= "password1" placeholder="Password" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+         <input type="password" name= "password2" placeholder="Password" class="form-control">
+      </div>
+    </div>
+
+    <div class="text-center">
+       <button type="submit">REGISTRARSE</button>
+      <!---<input type="submit" class="boton btn-block py-2" value="Enviar">-->
+    </div>
+</form>
+{% endblock %}

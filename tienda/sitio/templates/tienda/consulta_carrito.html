@@ -1,0 +1,71 @@
+{% extends "tienda/layout.html" %}
+
+{% block content %}
+
+    <div class="col-12 text-center">
+        <samp>
+             <h2>CARRITO</h2>
+        </samp>
+    </div> 
+        
+    {% if user.is_authenticated %}      <!--usuario logueado--->
+        <hr>                     
+         <h3>{{ user.get_username }}</h3>
+        <hr>
+
+        {% if perms.sitio.add_producto %}
+
+            <a href=""></a>
+            <br>
+
+        {% else %}  
+
+            <!--<ol>
+                { % for item in carrito2 % }
+                    <li>{{item}}</li> 
+                { % empty % }
+                    <li>No hay productos en el Carrito.</li>
+                { % endfor % }
+            </ol>{ % unprod = 0 % }-->
+
+            <ol>    
+                {% for item in carrito2 %}
+
+                    {% with item.0 as producto_id %} 
+                    <!--{ { producto_id =  } }-->
+                    <li>
+                         Id_producto: {{producto_id}}: {{item.1}} -- {{item.2}} -- /<a href="{% url 'sitio:carrito_quitar' %}">Quitar</a> 
+                    </li> <!--En python:  print(item[0],item[1], item[2])  -->
+                    
+                    {% endwith %}
+
+                {% empty %}
+
+                    <li>No hay productos en el Carrito.</li>
+
+                {% endfor %}
+                
+            </ol>
+
+            <div align="right">  <!----<button type="button" class="btn btn-outline-primary">Primary</button>-------boton btn-block py-2------>
+                {% for item in carrito2 %}
+
+                     <a href="{% url 'sitio:carrito_eliminar' %}" class="btn btn-primary btn-sm" type="button">Vaciar Carrito</a>
+                     <a href="" class="btn btn-primary btn-sm" type="button">Finalizar Compra</a>
+            
+                {% empty %}
+
+                    <a href="{% url 'sitio:carrito_eliminar' %}" class="btn btn-secondary btn-sm disabled"  type="button" aria-disabled="true">Vaciar Carrito</a>
+                    <a href="" class="btn btn-secondary btn-sm disabled" type="button" aria-disabled="true">Finalizar Compra</a>
+
+                {% endfor %}
+            </div>
+
+        {% endif %}     
+         
+    {% else %}
+        <h3>...</h3>
+    {% endif %} 
+
+     <hr><br>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "registration/layout.html" %}
+<!--{ % extends 'tienda/layout.html'  % }--->
+
+{% block content %}
+
+  <h2>REGISTRARSE EN NUESTRA WEB</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for campo in form %}
+      <p>
+        {{ campo.label_tag }}<br>
+        {{ campo }}
+        {% if campo.help_text %}
+          <small style="color: grey">{{ campo.help_text }}</small>
+        {% endif %}
+        {% for error in campo.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">REGISTRARSE</button>
+  </form>
+  
+{% endblock %}
